@@ -1,0 +1,34 @@
+﻿<Window x:Class="option_two.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:option_two"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox Grid.Column="0" Grid.Row="1" Margin="10 10 10 100" x:Name="Catalog" ItemsSource="{Binding Tasks}" BorderBrush="Black" BorderThickness="1" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить" Click="MenuItem_Delete1_Click"/>
+                    <MenuItem Header="Изменить" Click="MenuItem_Change1_Click"/>
+                    <MenuItem Header="Добавить" Click="MenuItem_Add_Click"/>
+                    <MenuItem Header="Экспортировать всё в txt" Click="MenuItem_Ex_Click"/>
+                    <MenuItem Header="Экспортировать всё в csv" Click="MenuItem_Csv_Click"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+            <ListBox.ItemTemplate >
+                <DataTemplate>
+                    <Border BorderBrush="Gray" BorderThickness="0.4">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Name="Name" FontSize="15" Text="{Binding Path=Name}"/>
+                            <TextBlock x:Name="Duration" Text="{Binding Path=Duration, Mode=OneWay}" FontSize="15" />
+                            <TextBlock x:Name="Cost" FontSize="15" Text="{Binding Path=Cost}"/>
+                            <TextBlock x:Name="Sale" Text="{Binding Path=Sale}" FontSize="15"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
